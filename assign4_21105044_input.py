@@ -46,42 +46,47 @@ for i in range(n):
                 
    #3rd program
 print('3rd program')
-a=int(input("Enter the first integer: "))
-b=int(input("Enter the second integer: "))
-c=a%b
-d=a//b
-print("Remainder is: ", c)
-print("Quotient is: ",d)
-if(c!=0):
-    if (d!=0):
-        print("Both values are non zero")
+val1 = int(input("Enter first integer value(dividend): "))
+while True:                                                                                             
+    val2 = int(input("Enter second integer value(divisor): "))
+    if val2 != 0:
+        break
     else:
-        print("quotient is non zero")
-else:
-    if (d!=0):
-        print("remainder is zero")
-    else:
-        print("Both values are zero")
-#adding data into set and updating values.
-set1=set()
-for i in range (4,7):
-    a=c+i
-    b=d+i
-    if(a>4):
-        set1.add(a)
-        print(set1)
-    if(b>4):
-        set1.add(b)
-        print(set1)
-    else:
-        continue
+        print("\nDivisor must not be 0\nPlease enter the divisor again")
+result = divmod(val1,val2)
+print("\nQuotient:",result[0],"\nRemainder:",result[1])
 
-print(set1)
-set2=frozenset(set1)
-print("Immutable set: ", frozenset(set1))
-print("Max value in the set: ", max(set2))
-print("Hash value: ", hash(max(set2)))
-print("")
+print("\na.")                                 
+a_part = callable(divmod)
+print(a_part, end="")
+if a_part == True:
+    print(", which means it is callable")
+else:
+    print(", which means it is not callable")
+
+print("\nb.")                                            
+if all(x != 0 for x in result):
+    print("All values in result(i.e. quotient and remainder) are non-zero.")
+else:
+    print("All values in result(i.e. quotient and remainder) are not non-zero(i.e. one of them is 0).")
+
+print("\nc.")                           
+c_part = result + (4,5,6)
+c_part_output = sorted(list((x for x in c_part if x>4)))
+print("Values greater than 4(in list format) are:", c_part_output)
+
+print("\nd.")                                            
+d_part = set(c_part_output)
+print("The output of previous part in set datatype would be:", d_part)
+
+print("\ne.")                                                                  
+e_part = frozenset(d_part)
+print("The immutable set would be:", e_part)
+
+print("\nf.")                     
+f_part = max(e_part)
+print("The maximum value from the set is:", f_part)
+print("The hash value of %d(considering it to be integer) is %d and its hash value is %d(if we consider %s as a string)." % (f_part,hash(f_part),hash(str(f_part)),str(f_part)))
 
 
 
